@@ -12,6 +12,9 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 //
+
+package vanet_project.simulations.tictactoe;
+
 simple Txc1
 {
     gates:
@@ -23,19 +26,23 @@ simple Txc1
 // Two instances (tic and toc) of Txc1 connected both ways.
 // Tic and toc will pass messages to one another.
 //
-network Tictoc1
+network Tictactoe
 {
     @display("bgb=238,176");
     submodules:
         tic: Txc1 {
             @display("p=51,44");
         }
-        toc: Txc1 {
+        tac: Txc1 {
             @display("p=174,120");
         }
+        toe: Txc1 {
+            @display("p=174,44");
+        }
     connections:
-        tic.out --> {  delay = 100ms; } --> toc.in;
-        tic.in <-- {  delay = 100ms; } <-- toc.out;
+        tic.out --> {  delay = 100ms; } --> tac.in;
+        tac.out --> {  delay = 100ms; } --> toe.in;
+        toe.out --> {  delay = 100ms; } --> tic.in;
 }
 
 
