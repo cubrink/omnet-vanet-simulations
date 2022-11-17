@@ -1,2 +1,2 @@
 # omnet-vanet-simulations
-Project for CS6602/CpE6640
+Project for CpE6640/CS6602
